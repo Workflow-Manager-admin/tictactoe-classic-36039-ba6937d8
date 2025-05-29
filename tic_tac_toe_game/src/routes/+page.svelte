@@ -1,11 +1,4 @@
 <script>
-  // Theme colors
-  const COLORS = {
-    primary: "#ffffff",
-    secondary: "#000000",
-    accent: "#2196f3"
-  };
-
   // Board state: empty = "", Player X = "X", Player O = "O"
   let board = Array(9).fill("");
   let xIsNext = true; // X always starts first
