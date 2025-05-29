@@ -57,12 +57,13 @@
 
 <style>
   .centered-container {
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    background: {COLORS.primary};
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background: var(--color-primary);
   }
   .status-bar {
     margin-bottom: 1rem; font-size: 1.3rem;
-    color: {COLORS.secondary};
+    color: var(--color-secondary);
     text-align: center;
     min-height: 2.5rem;
   }
@@ -72,19 +73,19 @@
     grid-template-rows: repeat(3, 64px);
     gap: 8px;
     margin-bottom: 1rem;
-    background: {COLORS.primary};
+    background: var(--color-primary);
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     padding: 12px;
   }
   .cell {
-    background: {COLORS.primary};
-    color: {COLORS.secondary};
+    background: var(--color-primary);
+    color: var(--color-secondary);
     font-size: 2.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid {COLORS.accent};
+    border: 2px solid var(--color-accent);
     border-radius: 6px;
     outline: none;
     cursor: pointer;
@@ -96,14 +97,14 @@
   }
   .cell:focus, .cell:hover {
     background: #f2f8fe;
-    box-shadow: 0 0 0 2px {COLORS.accent}22;
+    box-shadow: 0 0 0 2px #2196f322;
   }
   .cell.disabled {
     pointer-events: none;
     opacity: 0.65;
   }
   .restart-btn {
-    background: {COLORS.accent};
+    background: var(--color-accent);
     color: #fff;
     border: none;
     padding: 0.65rem 2rem;
@@ -120,12 +121,19 @@
   }
 </style>
 
-<div class="centered-container" style="background: {COLORS.primary};">
+<div
+  class="centered-container"
+  style="
+    --color-primary: #ffffff;
+    --color-secondary: #000000;
+    --color-accent: #2196f3;
+    background: var(--color-primary);"
+>
   <div class="status-bar">
     {status}
   </div>
   <div class="board">
-    {#each board as cell, idx}
+    {#each board as cell, idx (idx)}
       <button
         class="cell {cell || gameOver ? 'disabled' : ''}"
         disabled={!!cell || gameOver}
